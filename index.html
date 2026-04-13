@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jood Store | جود ستور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #25d366; 
+            --secondary-color: #0f172a;
+            --accent-color: #2563eb;
+            --bg-color: #f8fafc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Changa', sans-serif; }
+        body { background-color: var(--bg-color); color: #334155; }
+
+        nav {
+            background: white; padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { font-size: 1.8rem; font-weight: 700; cursor: pointer; color: var(--secondary-color); text-decoration: none; }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links li a { text-decoration: none; color: var(--secondary-color); font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .nav-links li a:hover { color: var(--accent-color); }
+
+        .page { display: none; min-height: 80vh; animation: fadeIn 0.4s ease; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        #home-page {
+            height: 85vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; color: white;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+        }
+        #home-page h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .btn-browse { background: var(--accent-color); color: white; padding: 15px 45px; border-radius: 30px; border: none; font-size: 1.2rem; cursor: pointer; font-weight: bold; margin-top: 20px; }
+
+        .container { padding: 50px 5%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .card { 
+            background: white; border-radius: 20px; padding: 25px; text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; border-radius: 10px; }
+        .price { color: var(--accent-color); font-weight: 700; font-size: 1.5rem; }
+
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.85);
+            justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-content {
+            background: white; width: 100%; max-width: 900px; border-radius: 25px;
+            display: flex; position: relative; overflow: hidden; max-height: 90vh;
+        }
+        .close-modal { position: absolute; top: 20px; left: 20px; font-size: 35px; cursor: pointer; z-index: 10; color: #94a3b8; }
+        .modal-images { width: 50%; background: #f8fafc; padding: 40px; display: flex; align-items: center; justify-content: center; }
+        .modal-images img { width: 100%; max-height: 400px; object-fit: contain; border-radius: 15px; }
+        .modal-info { width: 50%; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        
+        .whatsapp-btn {
+            background: var(--primary-color); color: white; padding: 18px; border: none;
+            border-radius: 12px; font-weight: 700; margin-top: 30px; cursor: pointer;
+            text-decoration: none; text-align: center; font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+
+        @media (max-width: 850px) {
+            .modal-content { flex-direction: column; overflow-y: auto; }
+            .modal-images, .modal-info { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="showPage('home-page')">JOOD STORE</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home-page')">الرئيسية</a></li>
+            <li><a onclick="showPage('products-page')">المنتجات</a></li>
+            <li><a onclick="showPage('contact-page')">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <div id="home-page" class="page active">
+        <h1>مرحباً بك في جود ستور</h1>
+        <p>وجهتك الأولى لأحدث الأجهزة الإلكترونية والتقنيات الذكية</p>
+        <button class="btn-browse" onclick="showPage('products-page')">استعرض المنتجات</button>
+    </div>
+
+    <div id="products-page" class="page">
+        <div class="container">
+            <h2 style="text-align:center; margin-bottom:50px; font-size: 2.5rem;">كتالوج الأجهزة</h2>
+            <div class="grid" id="products-grid"></div>
+        </div>
+    </div>
+
+    <div id="contact-page" class="page">
+        <div class="container">
+            <div class="contact-box" style="text-align:center; background:white; padding:50px; border-radius:25px;">
+                <h2 style="font-size: 2rem;">تواصل مباشر مع الإدارة</h2>
+                <p style="margin: 25px 0;">نحن متاحون لخدمتك عبر الواتساب.</p>
+                <a href="https://wa.me/962781707630" target="_blank" class="whatsapp-btn">ابدأ المحادثة الآن</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-images">
+                <img id="modalImg" src="" alt="product">
+            </div>
+            <div class="modal-info">
+                <p id="modalCat" style="color:var(--accent-color); font-weight:bold;"></p>
+                <h2 id="modalTitle" style="margin: 15px 0; font-size: 2rem;"></h2>
+                <div id="modalDesc" style="color:#64748b; line-height:1.8; margin-bottom:25px;"></div>
+                <p class="price" id="modalPrice"></p>
+                <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">طلب المنتج عبر واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MY_PHONE = "962781707630"; 
+
+        const products = [
+            { 
+                id: 1, 
+                name: "لابتوب ديل - Intel Core i7", 
+                price: "300 دينار", 
+                cat: "حواسيب محمولة", 
+                desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", 
+                img: "dell.jpg"
+            }
+        ];
+
+        function displayProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="card" onclick="openProduct(${p.id})">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p class="price">${p.price}</p>
+                </div>
+            `).join('');
+        }
+
+        function openProduct(id) {
+            const p = products.find(x => x.id === id);
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalCat').innerText = p.cat;
+            document.getElementById('modalDesc').innerHTML = p.desc;
+            document.getElementById('modalPrice').innerText = p.price;
+            document.getElementById('modalImg').src = p.img;
+            const message = `مرحباً جود ستور، أريد طلب هذا المنتج:\n\nالمنتج: ${p.name}\nالسعر: ${p.price}`;
+            document.getElementById('whatsappLink').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(message)}`;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('productModal').style.display = 'none'; }
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        window.onclick = (e) => { if(e.target.id === 'productModal') closeModal(); }
+        window.onload = displayProducts;
+    </script>
+</body>
+</html>
