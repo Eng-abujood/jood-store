@@ -7,70 +7,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #25d366; 
-            --secondary-color: #0f172a;
-            --accent-color: #2563eb;
-            --bg-color: #f8fafc;
+            --primary-glow: #00f2ff; /* لون الإضاءة */
+            --secondary-bg: #0f172a; /* كحلي غامق للخلفية */
+            --card-bg: #1e293b; /* رمادي غامق للكروت */
+            --accent-color: #38bdf8; /* أزرق فاتح للنصوص */
+            --text-main: #f1f5f9;
+            --whatsapp-green: #25d366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Changa', sans-serif; }
-        body { background-color: var(--bg-color); color: #334155; }
+        body { background-color: var(--secondary-bg); color: var(--text-main); line-height: 1.6; }
 
+        /* الهيدر */
         nav {
-            background: white; padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.9); padding: 1rem 5%;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 242, 255, 0.1);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
         }
-        .logo { font-size: 1.8rem; font-weight: 700; cursor: pointer; color: var(--secondary-color); text-decoration: none; }
+        .logo { font-size: 1.8rem; font-weight: 700; cursor: pointer; color: var(--primary-glow); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
         .nav-links { display: flex; gap: 25px; list-style: none; }
-        .nav-links li a { text-decoration: none; color: var(--secondary-color); font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .nav-links li a:hover { color: var(--accent-color); }
+        .nav-links li a { text-decoration: none; color: var(--text-main); font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .nav-links li a:hover { color: var(--primary-glow); text-shadow: 0 0 8px var(--primary-glow); }
 
-        .page { display: none; min-height: 80vh; animation: fadeIn 0.4s ease; }
+        .page { display: none; min-height: 80vh; animation: fadeIn 0.5s ease; }
         .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* الصفحة الرئيسية */
         #home-page {
             height: 85vh; display: flex; flex-direction: column; justify-content: center;
             align-items: center; text-align: center; color: white;
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
                         url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1350&q=80');
             background-size: cover; background-position: center;
         }
-        #home-page h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        .btn-browse { background: var(--accent-color); color: white; padding: 15px 45px; border-radius: 30px; border: none; font-size: 1.2rem; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        #home-page h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--primary-glow); }
+        
+        /* تأثير الإضاءة على الأزرار */
+        .btn-browse { 
+            background: transparent; color: var(--primary-glow); padding: 15px 45px; 
+            border-radius: 30px; border: 2px solid var(--primary-glow); font-size: 1.2rem; 
+            cursor: pointer; font-weight: bold; margin-top: 20px; transition: 0.4s;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+        .btn-browse:hover { 
+            background: var(--primary-glow); color: var(--secondary-bg);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
 
         .container { padding: 50px 5%; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        
+        /* الكروت */
         .card { 
-            background: white; border-radius: 20px; padding: 25px; text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s;
+            background: var(--card-bg); border-radius: 20px; padding: 20px; text-align: center;
+            border: 1px solid rgba(56, 189, 248, 0.1); transition: 0.4s; position: relative;
         }
-        .card:hover { transform: translateY(-10px); }
-        .card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; border-radius: 10px; }
-        .price { color: var(--accent-color); font-weight: 700; font-size: 1.5rem; }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary-glow);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
+        }
+        .card img { width: 100%; height: 180px; object-fit: cover; margin-bottom: 15px; border-radius: 12px; }
+        .card h3 { margin-bottom: 10px; color: var(--text-main); }
+        .price { color: var(--primary-glow); font-weight: 700; font-size: 1.4rem; text-shadow: 0 0 5px rgba(0, 242, 255, 0.3); }
 
+        /* المودال (نافذة التفاصيل) */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0;
-            width: 100%; height: 100%; background: rgba(0,0,0,0.85);
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
             justify-content: center; align-items: center; padding: 20px;
         }
         .modal-content {
-            background: white; width: 100%; max-width: 900px; border-radius: 25px;
+            background: var(--card-bg); width: 100%; max-width: 900px; border-radius: 25px;
             display: flex; position: relative; overflow: hidden; max-height: 90vh;
+            border: 1px solid var(--primary-glow);
         }
-        .close-modal { position: absolute; top: 20px; left: 20px; font-size: 35px; cursor: pointer; z-index: 10; color: #94a3b8; }
-        .modal-images { width: 50%; background: #f8fafc; padding: 40px; display: flex; align-items: center; justify-content: center; }
-        .modal-images img { width: 100%; max-height: 400px; object-fit: contain; border-radius: 15px; }
-        .modal-info { width: 50%; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .close-modal { position: absolute; top: 20px; left: 20px; font-size: 35px; cursor: pointer; z-index: 10; color: var(--accent-color); }
+        .modal-images { width: 50%; background: #000; padding: 20px; display: flex; align-items: center; justify-content: center; }
+        .modal-images img { width: 100%; max-height: 400px; object-fit: contain; }
+        .modal-info { width: 50%; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         
+        /* زر واتساب مع توهج */
         .whatsapp-btn {
-            background: var(--primary-color); color: white; padding: 18px; border: none;
-            border-radius: 12px; font-weight: 700; margin-top: 30px; cursor: pointer;
-            text-decoration: none; text-align: center; font-size: 1.2rem;
-            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: var(--whatsapp-green); color: white; padding: 15px; border: none;
+            border-radius: 12px; font-weight: 700; margin-top: 20px; cursor: pointer;
+            text-decoration: none; text-align: center; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
+        .whatsapp-btn:hover { transform: scale(1.03); box-shadow: 0 0 25px var(--whatsapp-green); }
+
+        .contact-box { background: var(--card-bg) !important; border: 1px solid var(--primary-glow); }
 
         @media (max-width: 850px) {
             .modal-content { flex-direction: column; overflow-y: auto; }
@@ -91,22 +121,22 @@
 
     <div id="home-page" class="page active">
         <h1>مرحباً بك في جود ستور</h1>
-        <p>وجهتك الأولى لأحدث الأجهزة الإلكترونية والتقنيات الذكية</p>
-        <button class="btn-browse" onclick="showPage('products-page')">استعرض المنتجات</button>
+        <p style="font-size: 1.2rem; opacity: 0.9;">قوتك التقنية تبدأ من هنا.. أفضل الأجهزة بأفضل الأسعار</p>
+        <button class="btn-browse" onclick="showPage('products-page')">استعرض الكتلوج</button>
     </div>
 
     <div id="products-page" class="page">
         <div class="container">
-            <h2 style="text-align:center; margin-bottom:50px; font-size: 2.5rem;">كتالوج الأجهزة</h2>
+            <h2 style="text-align:center; margin-bottom:50px; font-size: 2.5rem; color: var(--primary-glow);">كتالوج الأجهزة</h2>
             <div class="grid" id="products-grid"></div>
         </div>
     </div>
 
     <div id="contact-page" class="page">
         <div class="container">
-            <div class="contact-box" style="text-align:center; background:white; padding:50px; border-radius:25px;">
-                <h2 style="font-size: 2rem;">تواصل مباشر مع الإدارة</h2>
-                <p style="margin: 25px 0;">نحن متاحون لخدمتك عبر الواتساب.</p>
+            <div class="contact-box" style="text-align:center; padding:50px; border-radius:25px;">
+                <h2 style="font-size: 2rem; color: var(--primary-glow);">تواصل مباشر مع الإدارة</h2>
+                <p style="margin: 25px 0;">نحن متاحون لخدمتك ولأي استفسار تقني عبر الواتساب.</p>
                 <a href="https://wa.me/962781707630" target="_blank" class="whatsapp-btn">ابدأ المحادثة الآن</a>
             </div>
         </div>
@@ -120,10 +150,10 @@
             </div>
             <div class="modal-info">
                 <p id="modalCat" style="color:var(--accent-color); font-weight:bold;"></p>
-                <h2 id="modalTitle" style="margin: 15px 0; font-size: 2rem;"></h2>
-                <div id="modalDesc" style="color:#64748b; line-height:1.8; margin-bottom:25px;"></div>
+                <h2 id="modalTitle" style="margin: 10px 0; font-size: 1.8rem; color: var(--primary-glow);"></h2>
+                <div id="modalDesc" style="color:#cbd5e1; line-height:1.6; font-size: 0.95rem; margin-bottom:20px;"></div>
                 <p class="price" id="modalPrice"></p>
-                <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">طلب المنتج عبر واتساب</a>
+                <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">طلب هذا الجهاز عبر واتساب</a>
             </div>
         </div>
     </div>
@@ -132,14 +162,13 @@
         const MY_PHONE = "962781707630"; 
 
         const products = [
-            { 
-                id: 1, 
-                name: "لابتوب ديل - Intel Core i7", 
-                price: "300 دينار", 
-                cat: "حواسيب محمولة", 
-                desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", 
-                img: "dell.jpg"
-            }
+            { id: 1, name: "Dell Vostro - Core i7", price: "300 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", img: "dell.jpg" },
+            { id: 2, name: "Dell Latitude - Core i7", price: "260 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 جيل سابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 16GB قابل للزيادة<br>✅ بطارية ممتازة ومكفولة 3 أشهر<br>✅ تبريد قوي وأداء ثابت ومستقر", img: "delll.jpg" },
+            { id: 3, name: "Dell Latitude - Core i5", price: "180 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 جيل سادس<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تصميم عملي وأنيق", img: "dell1.jpg" },
+            { id: 4, name: "Lenovo ThinkPad", price: "150 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 QM جيل رابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 4GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر", img: "lenovo.jpg" },
+            { id: 5, name: "Dell - Core i3", price: "180 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i3 الجيل الحادي عشر<br>✅ التخزين: 1000GB HDD مساحة واسعة<br>✅ الرام: 4GB قابل للزيادة<br>✅ مثالي للدراسة والتصفح اليومي", img: "lenovo2.jpg" },
+            { id: 6, name: "HP - Core i7", price: "190 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 الجيل الخامس<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ مناسب للمونتاج الخفيف والأوتوكاد", img: "hp.jpg" },
+            { id: 7, name: "Dell Latitude - Core i7", price: "220 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 الجيل السادس<br>✅ التخزين: 512GB SSD سريع جداً<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ جرافيك: كرتين شاشة (Intel UHD + كرت إضافي)", img: "dell2.jpg" }
         ];
 
         function displayProducts() {
