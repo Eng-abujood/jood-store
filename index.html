@@ -135,7 +135,7 @@
     <div id="contact-page" class="page">
         <div class="container">
             <div class="contact-box" style="text-align:center; padding:50px; border-radius:25px;">
-                <h2 style="font-size: 2rem; color: var(--primary-glow);">تواصل مباشر مع الإدارة</h2>
+                <h2 style="font-size: 2rem; color: var(--primary-glow);">تواصل مباشر عبر واتساب</h2>
                 <p style="margin: 25px 0;">نحن متاحون لخدمتك ولأي استفسار تقني عبر الواتساب.</p>
                 <a href="https://wa.me/962781707630" target="_blank" class="whatsapp-btn">ابدأ المحادثة الآن</a>
             </div>
@@ -162,13 +162,125 @@
         const MY_PHONE = "962781707630"; 
 
         const products = [
-            { id: 1, name: "Dell Vostro - Core i7", price: "300 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", img: "dell.jpg" },
-            { id: 2, name: "Dell Latitude - Core i7", price: "260 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 جيل سابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 16GB قابل للزيادة<br>✅ بطارية ممتازة ومكفولة 3 أشهر<br>✅ تبريد قوي وأداء ثابت ومستقر", img: "delll.jpg" },
-            { id: 3, name: "Dell Latitude - Core i5", price: "180 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 جيل سادس<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تصميم عملي وأنيق", img: "dell1.jpg" },
-            { id: 4, name: "Lenovo ThinkPad", price: "150 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 QM جيل رابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 4GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر", img: "lenovo.jpg" },
-            { id: 5, name: "Dell - Core i3", price: "180 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i3 الجيل الحادي عشر<br>✅ التخزين: 1000GB HDD مساحة واسعة<br>✅ الرام: 4GB قابل للزيادة<br>✅ مثالي للدراسة والتصفح اليومي", img: "lenovo2.jpg" },
-            { id: 6, name: "HP - Core i7", price: "190 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 الجيل الخامس<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ مناسب للمونتاج الخفيف والأوتوكاد", img: "hp.jpg" },
-            { id: 7, name: "Dell Latitude - Core i7", price: "220 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 الجيل السادس<br>✅ التخزين: 512GB SSD سريع جداً<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ جرافيك: كرتين شاشة (Intel UHD + كرت إضافي)", img: "dell2.jpg" }
+            { 
+            id: 1, name: "Dell Vostro - Core i7", 
+            price: "300 دينار", 
+            cat: "حواسيب محمولة",
+            desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", 
+            img: "dell.jpg" 
+        },
+            { 
+            id: 2, name: "Dell Latitude - Core i7",
+             price: "260 دينار",
+              cat: "حواسيب محمولة", 
+              desc: "✅ المعالج: Intel Core i7 جيل سابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 16GB قابل للزيادة<br>✅ بطارية ممتازة ومكفولة 3 أشهر<br>✅ تبريد قوي وأداء ثابت ومستقر", 
+              img: "delll.jpg" 
+            },
+            { 
+            id: 3, name: "Dell Latitude - Core i5",
+             price: "180 دينار",
+              cat: "حواسيب محمولة", 
+              desc: "✅ المعالج: Intel Core i5 جيل سادس<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تصميم عملي وأنيق", 
+              img: "dell1.jpg" },
+            { 
+            id: 4, name: "Lenovo ThinkPad", 
+            price: "150 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i7 QM جيل رابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 4GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر", 
+            img: "lenovo.jpg" },
+            { 
+                
+            id: 5, name: "Dell - Core i3", 
+            price: "180 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i3 الجيل الحادي عشر<br>✅ التخزين: 1000GB HDD مساحة واسعة<br>✅ الرام: 4GB قابل للزيادة<br>✅ مثالي للدراسة والتصفح اليومي", 
+            img: "lenovo2.jpg" 
+        },
+            { 
+            id: 6, name: "HP - Core i7", 
+            price: "190 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i7 الجيل الخامس<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ مناسب للمونتاج الخفيف والأوتوكاد", 
+            img: "hp.jpg"
+         },
+            { 
+            id: 7, name: "Dell Latitude - Core i7", 
+            price: "220 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i7 الجيل السادس<br>✅ التخزين: 512GB SSD سريع جداً<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ جرافيك: كرتين شاشة (Intel UHD + كرت إضافي)", 
+            img: "dell2.jpg" },
+            { 
+            id: 8, 
+            name: "Lenovo ThinkPad - Core i5", 
+            price: "160 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i5 – الجيل الرابع<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ التخزين: 256GB SSD سريع جدًا<br>✅ الميزات: جهاز متين وعملي، مناسب جداً للدراسة، برامج الأوفيس، وبعض التطبيقات الهندسية الخفيفة.", 
+            img: "lenovo3.jpg" 
+        },
+        { 
+            id: 9, 
+            name: "Laptop Dell - Celeron Edition", 
+            price: "130 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Celeron أداء اقتصادي<br>✅ الرام: 4GB (قابل للزيادة)<br>✅ التخزين: 500GB HDD<br>✅ البطارية: ممتازة جداً وعملية<br>✅ الميزات: تبريد قوي ومستقر، جهاز متين جداً للاستخدام اليومي الخفيف مثل الدراسة 🧑‍💻 والتصفح والأوفيس.", 
+            img: "dell3.jpg" 
+        },
+        { 
+            id: 10, 
+            name: "Lenovo ThinkPad - Core i5 (5th Gen)", 
+            price: "150 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i5 الجيل الخامس<br>✅ التخزين: 128GB SSD سرعة عالية في التشغيل<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ الحالة: جهاز عملي جداً، خفيف الوزن، ومثالي لإنجاز الأعمال المكتبية والدراسة بسرعة وكفاءة.", 
+            img: "lenovo4.jpg" 
+        },
+        { 
+            id: 11, 
+            name: "Laptop Lenovo - Budget Edition", 
+            price: "120 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel أداء ثابت<br>✅ التخزين: 500GB HDD<br>✅ الرام: 4GB قابل للزيادة<br>✅ البطارية: ممتازة جداً وعملية<br>✅ الميزات: تبريد قوي ومستقر مع كفر متين جداً. مناسب للدراسة 🧑‍💻، التصفح، والاستخدام اليومي الخفيف.", 
+            img: "lenovo5.jpg" 
+        },
+        { 
+            id: 12, 
+            name: "Laptop Dell - Celeron SSD Edition", 
+            price: "130 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Celeron أداء سلس<br>✅ التخزين: 256GB SSD سريع جداً في الإقلاع<br>✅ الرام: 4GB قابل للزيادة<br>✅ البطارية: ممتازة (تصل إلى 4 ساعات عمل)🔋<br>✅ الميزات: تصميم أنيق وخفيف الوزن، تبريد مستقر وأداء مثالي للدراسة والتصفح اليومي.", 
+            img: "dell4.jpg" 
+        },
+        { 
+            id: 13, 
+            name: "Dell Latitude - Core i5 (8th Gen)", 
+            price: "230 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i5 الجيل الثامن (أداء قوي)<br>✅ التخزين: 256GB SSD سرعة فائقة في نقل البيانات<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ الحالة: جهاز احترافي من فئة Latitude المعروفة بمتانتها، مثالي للعمل الهندسي، الدراسة المتقدمة، والمهام المتعددة بسلاسة عالية.", 
+            img: "dell5.jpg" 
+        },
+        { 
+            id: 14, 
+            name: "Laptop Lenovo - i5 (8th Gen) + Dual Graphics", 
+            price: "230 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i5 الجيل الثامن<br>✅ التخزين: 128GB SSD (للسرعة) + 1000GB HDD (للتخزين الضخم)<br>✅ الرام: 8GB قابل للزيادة<br>✅ الجرافيك: كرتين شاشة (Intel + AMD 2GB منفصل 💪)<br>✅ الحالة: كلاس (بحال الجديد 100%) مع كفر متين وتبريد قوي.<br>✅ مناسب جداً لـ: الهندسة، البرمجة، أوتوكاد، التصميم، والألعاب.", 
+            img: "lenovo6.jpg" 
+        },
+        { 
+            id: 15, 
+            name: "HP EliteBook - Core i5 (11th Gen)", 
+            price: "300 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i5 الجيل الحادي عشر (سرعة جبارة)<br>✅ الرام: 8GB عالية السرعة<br>✅ التخزين: 256GB SSD فائق السرعة<br>✅ الشاشة: 14.1 بوصة وضوح ممتاز<br>✅ النظام: Windows 11 PRO الأصلي 💻<br>✅ الحالة: فئة EliteBook الفاخرة، تصميم معدني نحيف وقوي جداً للعمل الشاق والتنقل.", 
+            img: "hp1.jpg" 
+        },
+        { 
+            id: 16, 
+            name: "Laptop Dell - Core i5 (11th Gen)", 
+            price: "230 دينار", 
+            cat: "حواسيب محمولة", 
+            desc: "✅ المعالج: Intel Core i5 جيل 11 (أداء حديث وسريع)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ البطارية: ممتازة جداً وأداء مستقر<br>✅ الميزات: تصميم عصري، خفيف الوزن، ومثالي للطلاب والموظفين الذين يبحثون عن أداء جيل حديث بسعر منافس.", 
+            img: "dell6.jpg" 
+        }
         ];
 
         function displayProducts() {
