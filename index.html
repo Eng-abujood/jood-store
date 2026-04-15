@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-glow: #00f2ff; /* لون الإضاءة */
-            --secondary-bg: #0f172a; /* كحلي غامق للخلفية */
-            --card-bg: #1e293b; /* رمادي غامق للكروت */
-            --accent-color: #38bdf8; /* أزرق فاتح للنصوص */
+            --primary-glow: #00f2ff;
+            --secondary-bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
             --text-main: #f1f5f9;
             --whatsapp-green: #25d366;
         }
@@ -18,7 +18,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Changa', sans-serif; }
         body { background-color: var(--secondary-bg); color: var(--text-main); line-height: 1.6; }
 
-        /* الهيدر */
         nav {
             background: rgba(15, 23, 42, 0.9); padding: 1rem 5%;
             display: flex; justify-content: space-between; align-items: center;
@@ -27,7 +26,7 @@
             border-bottom: 1px solid rgba(56, 189, 248, 0.2);
         }
         .logo { font-size: 1.8rem; font-weight: 700; cursor: pointer; color: var(--primary-glow); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
-        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
         .nav-links li a { text-decoration: none; color: var(--text-main); font-weight: 600; cursor: pointer; transition: 0.3s; }
         .nav-links li a:hover { color: var(--primary-glow); text-shadow: 0 0 8px var(--primary-glow); }
 
@@ -35,7 +34,6 @@
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* الصفحة الرئيسية */
         #home-page {
             height: 85vh; display: flex; flex-direction: column; justify-content: center;
             align-items: center; text-align: center; color: white;
@@ -45,36 +43,26 @@
         }
         #home-page h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--primary-glow); }
         
-        /* تأثير الإضاءة على الأزرار */
         .btn-browse { 
-            background: transparent; color: var(--primary-glow); padding: 15px 45px; 
-            border-radius: 30px; border: 2px solid var(--primary-glow); font-size: 1.2rem; 
+            background: transparent; color: var(--primary-glow); padding: 12px 35px; 
+            border-radius: 30px; border: 2px solid var(--primary-glow); font-size: 1.1rem; 
             cursor: pointer; font-weight: bold; margin-top: 20px; transition: 0.4s;
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
-        .btn-browse:hover { 
-            background: var(--primary-glow); color: var(--secondary-bg);
-            box-shadow: 0 0 30px var(--primary-glow);
-        }
+        .btn-browse:hover { background: var(--primary-glow); color: var(--secondary-bg); box-shadow: 0 0 30px var(--primary-glow); }
 
         .container { padding: 50px 5%; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
         
-        /* الكروت */
         .card { 
             background: var(--card-bg); border-radius: 20px; padding: 20px; text-align: center;
             border: 1px solid rgba(56, 189, 248, 0.1); transition: 0.4s; position: relative;
         }
-        .card:hover { 
-            transform: translateY(-10px); 
-            border-color: var(--primary-glow);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
-        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary-glow); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15); }
         .card img { width: 100%; height: 180px; object-fit: cover; margin-bottom: 15px; border-radius: 12px; }
         .card h3 { margin-bottom: 10px; color: var(--text-main); }
         .price { color: var(--primary-glow); font-weight: 700; font-size: 1.4rem; text-shadow: 0 0 5px rgba(0, 242, 255, 0.3); }
 
-        /* المودال (نافذة التفاصيل) */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(0,0,0,0.9);
@@ -86,25 +74,27 @@
             border: 1px solid var(--primary-glow);
         }
         .close-modal { position: absolute; top: 20px; left: 20px; font-size: 35px; cursor: pointer; z-index: 10; color: var(--accent-color); }
-        .modal-images { width: 50%; background: #000; padding: 20px; display: flex; align-items: center; justify-content: center; }
-        .modal-images img { width: 100%; max-height: 400px; object-fit: contain; }
-        .modal-info { width: 50%; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         
-        /* زر واتساب مع توهج */
+        /* تعديل صور المودال لإزالة السواد */
+        .modal-images { width: 45%; background: var(--secondary-bg); padding: 20px; display: flex; align-items: center; justify-content: center; }
+        .modal-images img { width: 100%; max-height: 400px; object-fit: contain; border-radius: 10px; }
+        
+        .modal-info { width: 55%; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        
         .whatsapp-btn {
             background: var(--whatsapp-green); color: white; padding: 15px; border: none;
             border-radius: 12px; font-weight: 700; margin-top: 20px; cursor: pointer;
-            text-decoration: none; text-align: center; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+            text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;
             transition: 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         .whatsapp-btn:hover { transform: scale(1.03); box-shadow: 0 0 25px var(--whatsapp-green); }
 
-        .contact-box { background: var(--card-bg) !important; border: 1px solid var(--primary-glow); }
+        .section-title { text-align:center; margin-bottom:50px; font-size: 2.5rem; color: var(--primary-glow); text-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
 
         @media (max-width: 850px) {
             .modal-content { flex-direction: column; overflow-y: auto; }
             .modal-images, .modal-info { width: 100%; }
+            .nav-links { gap: 15px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -114,29 +104,39 @@
         <div class="logo" onclick="showPage('home-page')">JOOD STORE</div>
         <ul class="nav-links">
             <li><a onclick="showPage('home-page')">الرئيسية</a></li>
-            <li><a onclick="showPage('products-page')">المنتجات</a></li>
+            <li><a onclick="showPage('laptops-page')">اللابتوبات</a></li>
+            <li><a onclick="showPage('phones-page')">الهواتف</a></li>
             <li><a onclick="showPage('contact-page')">تواصل معنا</a></li>
         </ul>
     </nav>
 
     <div id="home-page" class="page active">
         <h1>مرحباً بك في جود ستور</h1>
-        <p style="font-size: 1.2rem; opacity: 0.9;">قوتك التقنية تبدأ من هنا.. أفضل الأجهزة بأفضل الأسعار</p>
-        <button class="btn-browse" onclick="showPage('products-page')">استعرض الكتلوج</button>
+        <p style="font-size: 1.2rem; opacity: 0.9;">أفضل الأجهزة المحمولة والهواتف الذكية بأسعار منافسة</p>
+        <div style="display:flex; gap:15px; margin-top:10px;">
+            <button class="btn-browse" onclick="showPage('laptops-page')">قسم اللابتوبات</button>
+            <button class="btn-browse" onclick="showPage('phones-page')" style="border-color: #fff; color: #fff;">قسم الهواتف</button>
+        </div>
     </div>
 
-    <div id="products-page" class="page">
+    <div id="laptops-page" class="page">
         <div class="container">
-            <h2 style="text-align:center; margin-bottom:50px; font-size: 2.5rem; color: var(--primary-glow);">كتالوج الأجهزة</h2>
-            <div class="grid" id="products-grid"></div>
+            <h2 class="section-title">كتالوج اللابتوبات</h2>
+            <div class="grid" id="laptops-grid"></div>
+        </div>
+    </div>
+
+    <div id="phones-page" class="page">
+        <div class="container">
+            <h2 class="section-title">كتالوج الهواتف</h2>
+            <div class="grid" id="phones-grid"></div>
         </div>
     </div>
 
     <div id="contact-page" class="page">
         <div class="container">
-            <div class="contact-box" style="text-align:center; padding:50px; border-radius:25px;">
-                <h2 style="font-size: 2rem; color: var(--primary-glow);">تواصل مباشر عبر واتساب</h2>
-                <p style="margin: 25px 0;">نحن متاحون لخدمتك ولأي استفسار تقني عبر الواتساب.</p>
+            <div style="text-align:center; padding:50px; border-radius:25px; border: 1px solid var(--primary-glow); background: var(--card-bg);">
+                <h2 style="font-size: 2rem; color: var(--primary-glow);">تواصل مباشر معنا</h2>
                 <a href="https://wa.me/962781707630" target="_blank" class="whatsapp-btn">ابدأ المحادثة الآن</a>
             </div>
         </div>
@@ -146,14 +146,14 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-images">
-                <img id="modalImg" src="" alt="product">
+                <img id="modalImg" src="" alt="">
             </div>
             <div class="modal-info">
                 <p id="modalCat" style="color:var(--accent-color); font-weight:bold;"></p>
-                <h2 id="modalTitle" style="margin: 10px 0; font-size: 1.8rem; color: var(--primary-glow);"></h2>
-                <div id="modalDesc" style="color:#cbd5e1; line-height:1.6; font-size: 0.95rem; margin-bottom:20px;"></div>
+                <h2 id="modalTitle" style="margin: 10px 0; color: var(--primary-glow);"></h2>
+                <div id="modalDesc" style="color:#cbd5e1; font-size: 0.95rem; margin-bottom:20px;"></div>
                 <p class="price" id="modalPrice"></p>
-                <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">طلب هذا الجهاز عبر واتساب</a>
+                <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">طلب عبر واتساب</a>
             </div>
         </div>
     </div>
@@ -161,157 +161,122 @@
     <script>
         const MY_PHONE = "962781707630"; 
 
-        const products = [
-            { 
-            id: 1, name: "Dell Vostro - Core i7", 
-            price: "300 دينار", 
-            cat: "حواسيب محمولة",
-            desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", 
-            img: "dell.jpg" 
+        const laptops = [
+            { id: 1, name: "Dell Vostro - Core i7", price: "300 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم أنيق وعصري", img: "dell.jpg" },
+            { id: 2, name: "Dell Latitude - Core i7", price: "260 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 جيل سابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 16GB قابل للزيادة<br>✅ بطارية ممتازة ومكفولة 3 أشهر ضد سوء الاستخدام المصنعي<br>✅ تبريد قوي وأداء ثابت ومستقر<br>✅ تصميم أنيق وعملي جداً", img: "delll.jpg" },
+            { id: 3, name: "Dell Latitude - Core i5", price: "180 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 جيل سادس<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم عملي وأنيق", img: "dell1.jpg" },
+            { id: 4, name: "Lenovo ThinkPad", price: "150 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 QM جيل رابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 4GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تبريد قوي وتصميم عملي وأنيق", img: "lenovo.jpg" },
+            { id: 5, name: "Dell - Core i3", price: "180 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i3 الجيل الحادي عشر<br>✅ التخزين: 1000GB HDD مساحة تخزين واسعة<br>✅ الرام: 4GB قابل للزيادة<br>✅ الميزات: مثالي جداً للدراسة 🧑‍💻، التصفح السريع، برامج الأوفيس، والاستخدام اليومي العملي.", img: "lenovo2.jpg" },
+            { id: 6, name: "HP - Core i7", price: "190 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 الجيل الخامس<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ البطارية: ممتازة جداً (جديدة ومكفولة 3 شهور)<br>✅ الميزات: تبريد قوي ومستقر، مناسب للدراسة 🧑‍💻، المونتاج الخفيف، ألعاب خفيفة إلى متوسطة، وبرامج الهندسة مثل الأوتوكاد.", img: "hp.jpg" },
+            { id: 7, name: "Dell Latitude - Core i7", price: "220 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i7 الجيل السادس<br>✅ التخزين: 512GB SSD مساحة كبيرة وسريعة<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ الجرافيك: كرتين شاشة (Intel UHD + كرت إضافي 💪)<br>✅ الميزات: بطارية ممتازة وتبريد قوي. مناسب للدراسة 🧑‍💻، الأوتوكاد، المونتاج الخفيف، والألعاب.", img: "dell2.jpg" },
+            { id: 8, name: "Lenovo ThinkPad - Core i5", price: "160 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 – الجيل الرابع<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ التخزين: 256GB SSD سريع جدًا<br>✅ مناسب للدراسة، الأوفيس وبعض البرامج الهندسية", img: "lenovo3.jpg" },
+            { id: 9, name: "Dell - Celeron Edition", price: "130 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Celeron<br>✅ الرام: 4 جيجا (قابل للزيادة)<br>✅ التخزين: 500 HDD<br>✅ البطارية: ممتازة جداً<br>✅ تبريد قوي ومستقر<br>✅ مناسب للدراسة والتصفح اليومي الخفيف", img: "dell3.jpg" },
+            { id: 10, name: "ThinkPad - i5 G5", price: "150 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 الجيل الخامس<br>✅ الهارديسك: 128 SSD سريع جداً<br>✅ الرام: 8 جيجا (قابلة للزيادة)", img: "lenovo4.jpg" },
+            { id: 11, name: "Lenovo - Budget", price: "120 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel<br>✅ الهارديسك: 500 HDD<br>✅ الرام: 4 جيجا قابل للزيادة<br>✅ مناسب للدراسة والتصفح والاستخدام اليومي", img: "lenovo5.jpg" },
+            { id: 12, name: "Dell - Celeron SSD", price: "130 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Celeron<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 4GB قابل للزيادة<br>✅ بطارية ممتازة (حتى 4 ساعات)", img: "dell4.jpg" },
+            { id: 13, name: "Dell Latitude - i5 G8", price: "230 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 الجيل الثامن<br>✅ الهارديسك: 256 SSD سريع جداً<br>✅ الرام: 8 جيجا (قابلة للزيادة)", img: "dell5.jpg" },
+            { id: 14, name: "Lenovo - Dual Graphics", price: "230 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 الجيل الثامن<br>✅ التخزين: 128 SSD + 1000 HDD<br>✅ كرت شاشة: كرتين شاشة (Intel + AMD 2GB)<br>✅ مناسب للهندسة والبرمجة والتصميم", img: "lenovo6.jpg" },
+            { id: 15, name: "HP EliteBook - i5 G11", price: "300 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 11th الجيل الحادي عشر<br>✅ Ram 8 GB | SSD 256 GB<br>✅ Windows 11PRO الاصلي", img: "hp1.jpg" },
+            { id: 16, name: "Dell - Core i5 G11", price: "230 دينار", cat: "حواسيب محمولة", desc: "✅ المعالج: Intel Core i5 جيل 11<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة", img: "dell6.jpg" }
+        ];
+
+        const phones = [
+           { 
+            id: 101, 
+            name: "iPhone 13 Pro Max", 
+            price: "419 دينار", 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 256GB<br>✅ صحة البطارية: 87% 🛢<br>✅ الحالة: بحالة الوكالة (غير مفتوح ولا مجدد ولا مصلح)<br>✅ ملاحظة: جميع القطع أصلية 💯", 
+            img: "iphone13promax.jpg" 
         },
-            { 
-            id: 2, name: "Dell Latitude - Core i7",
-             price: "260 دينار",
-              cat: "حواسيب محمولة", 
-              desc: "✅ المعالج: Intel Core i7 جيل سابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 16GB قابل للزيادة<br>✅ بطارية ممتازة ومكفولة 3 أشهر<br>✅ تبريد قوي وأداء ثابت ومستقر", 
-              img: "delll.jpg" 
-            },
-            { 
-            id: 3, name: "Dell Latitude - Core i5",
-             price: "180 دينار",
-              cat: "حواسيب محمولة", 
-              desc: "✅ المعالج: Intel Core i5 جيل سادس<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر<br>✅ تصميم عملي وأنيق", 
-              img: "dell1.jpg" },
-            { 
-            id: 4, name: "Lenovo ThinkPad", 
-            price: "150 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i7 QM جيل رابع<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 4GB قابل للزيادة<br>✅ بطارية ممتازة وأداء مستقر", 
-            img: "lenovo.jpg" },
-            { 
-                
-            id: 5, name: "Dell - Core i3", 
-            price: "180 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i3 الجيل الحادي عشر<br>✅ التخزين: 1000GB HDD مساحة واسعة<br>✅ الرام: 4GB قابل للزيادة<br>✅ مثالي للدراسة والتصفح اليومي", 
-            img: "lenovo2.jpg" 
+        { 
+            id: 102, 
+            name: "iPhone 14 Pro", 
+            price: "450 دينار", 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 128GB<br>✅ صحة البطارية: 100% 🔋<br>✅ الحالة: مشحون 7 مرات فقط (حالة الوكالة)<br>✅ ملاحظة: جميع القطع أصلية، غير مفتوح أو مصلح 💯", 
+            img: "iphone14pro.jpg" 
         },
-            { 
-            id: 6, name: "HP - Core i7", 
-            price: "190 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i7 الجيل الخامس<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ مناسب للمونتاج الخفيف والأوتوكاد", 
-            img: "hp.jpg"
-         },
-            { 
-            id: 7, name: "Dell Latitude - Core i7", 
+        { 
+            id: 103, 
+            name: "iPhone 14 Pro (90%)", 
+            price: "445 دينار", 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 128GB<br>✅ صحة البطارية: 90% 🛢<br>✅ الحالة: بحالة الوكالة (غير مفتوح ولا مجدد ولا مصلح)<br>✅ ملاحظة: جميع القطع أصلية💯", 
+            img: "iphone14pro.jpg" 
+        },
+        { 
+            id: 104, 
+            name: "iPhone 14 Pro Max", 
+            price: "469 دينار", 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 128GB<br>✅ صحة البطارية: 85% 🛢<br>✅ الحالة: بحالة الوكالة (غير مفتوح ولا مجدد ولا مصلح)<br>✅ ملاحظة: جميع القطع أصلية 💯", 
+            img: "iphone14pro.jpg" 
+        },
+        { 
+            id: 105, 
+            name: "iPhone 11 Pro Max", 
+            price: "249 دينار", 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 256GB<br>✅ صحة البطارية: 89% 🛢<br>✅ الحالة: بحالة الوكالة (غير مفتوح ولا مجدد ولا مصلح)<br>✅ ملاحظة: جميع القطع أصلية 💯", 
+            img: "iphone11pm.jpg" 
+        },
+        { 
+            id: 106, 
+            name: "iPhone 11", 
             price: "220 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i7 الجيل السادس<br>✅ التخزين: 512GB SSD سريع جداً<br>✅ الرام: 16GB (قابل للزيادة)<br>✅ جرافيك: كرتين شاشة (Intel UHD + كرت إضافي)", 
-            img: "dell2.jpg" },
-            { 
-            id: 8, 
-            name: "Lenovo ThinkPad - Core i5", 
-            price: "160 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i5 – الجيل الرابع<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ التخزين: 256GB SSD سريع جدًا<br>✅ الميزات: جهاز متين وعملي، مناسب جداً للدراسة، برامج الأوفيس، وبعض التطبيقات الهندسية الخفيفة.", 
-            img: "lenovo3.jpg" 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 128GB<br>✅ صحة البطارية: 86% 🛢<br>✅ الحالة: بحالة الوكالة (مش مفتوح ولا مصلح ولا مغير إشي)<br>✅ ملاحظة: جميع القطع أصلية 💯", 
+            img: "iphone11.jpg" 
         },
         { 
-            id: 9, 
-            name: "Laptop Dell - Celeron Edition", 
-            price: "130 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Celeron أداء اقتصادي<br>✅ الرام: 4GB (قابل للزيادة)<br>✅ التخزين: 500GB HDD<br>✅ البطارية: ممتازة جداً وعملية<br>✅ الميزات: تبريد قوي ومستقر، جهاز متين جداً للاستخدام اليومي الخفيف مثل الدراسة 🧑‍💻 والتصفح والأوفيس.", 
-            img: "dell3.jpg" 
-        },
-        { 
-            id: 10, 
-            name: "Lenovo ThinkPad - Core i5 (5th Gen)", 
-            price: "150 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i5 الجيل الخامس<br>✅ التخزين: 128GB SSD سرعة عالية في التشغيل<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ الحالة: جهاز عملي جداً، خفيف الوزن، ومثالي لإنجاز الأعمال المكتبية والدراسة بسرعة وكفاءة.", 
-            img: "lenovo4.jpg" 
-        },
-        { 
-            id: 11, 
-            name: "Laptop Lenovo - Budget Edition", 
-            price: "120 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel أداء ثابت<br>✅ التخزين: 500GB HDD<br>✅ الرام: 4GB قابل للزيادة<br>✅ البطارية: ممتازة جداً وعملية<br>✅ الميزات: تبريد قوي ومستقر مع كفر متين جداً. مناسب للدراسة 🧑‍💻، التصفح، والاستخدام اليومي الخفيف.", 
-            img: "lenovo5.jpg" 
-        },
-        { 
-            id: 12, 
-            name: "Laptop Dell - Celeron SSD Edition", 
-            price: "130 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Celeron أداء سلس<br>✅ التخزين: 256GB SSD سريع جداً في الإقلاع<br>✅ الرام: 4GB قابل للزيادة<br>✅ البطارية: ممتازة (تصل إلى 4 ساعات عمل)🔋<br>✅ الميزات: تصميم أنيق وخفيف الوزن، تبريد مستقر وأداء مثالي للدراسة والتصفح اليومي.", 
-            img: "dell4.jpg" 
-        },
-        { 
-            id: 13, 
-            name: "Dell Latitude - Core i5 (8th Gen)", 
-            price: "230 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i5 الجيل الثامن (أداء قوي)<br>✅ التخزين: 256GB SSD سرعة فائقة في نقل البيانات<br>✅ الرام: 8GB (قابلة للزيادة)<br>✅ الحالة: جهاز احترافي من فئة Latitude المعروفة بمتانتها، مثالي للعمل الهندسي، الدراسة المتقدمة، والمهام المتعددة بسلاسة عالية.", 
-            img: "dell5.jpg" 
-        },
-        { 
-            id: 14, 
-            name: "Laptop Lenovo - i5 (8th Gen) + Dual Graphics", 
-            price: "230 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i5 الجيل الثامن<br>✅ التخزين: 128GB SSD (للسرعة) + 1000GB HDD (للتخزين الضخم)<br>✅ الرام: 8GB قابل للزيادة<br>✅ الجرافيك: كرتين شاشة (Intel + AMD 2GB منفصل 💪)<br>✅ الحالة: كلاس (بحال الجديد 100%) مع كفر متين وتبريد قوي.<br>✅ مناسب جداً لـ: الهندسة، البرمجة، أوتوكاد، التصميم، والألعاب.", 
-            img: "lenovo6.jpg" 
-        },
-        { 
-            id: 15, 
-            name: "HP EliteBook - Core i5 (11th Gen)", 
-            price: "300 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i5 الجيل الحادي عشر (سرعة جبارة)<br>✅ الرام: 8GB عالية السرعة<br>✅ التخزين: 256GB SSD فائق السرعة<br>✅ الشاشة: 14.1 بوصة وضوح ممتاز<br>✅ النظام: Windows 11 PRO الأصلي 💻<br>✅ الحالة: فئة EliteBook الفاخرة، تصميم معدني نحيف وقوي جداً للعمل الشاق والتنقل.", 
-            img: "hp1.jpg" 
-        },
-        { 
-            id: 16, 
-            name: "Laptop Dell - Core i5 (11th Gen)", 
-            price: "230 دينار", 
-            cat: "حواسيب محمولة", 
-            desc: "✅ المعالج: Intel Core i5 جيل 11 (أداء حديث وسريع)<br>✅ التخزين: 256GB SSD سريع جداً<br>✅ الرام: 8GB قابل للزيادة<br>✅ البطارية: ممتازة جداً وأداء مستقر<br>✅ الميزات: تصميم عصري، خفيف الوزن، ومثالي للطلاب والموظفين الذين يبحثون عن أداء جيل حديث بسعر منافس.", 
-            img: "dell6.jpg" 
+            id: 107, 
+            name: "iPhone 12 Pro", 
+            price: "240 دينار", 
+            cat: "هاتف ذكي", 
+            desc: "✅ السعة: 128GB<br>✅ صحة البطارية: 79% 🛢<br>✅ الحالة: بحالة الوكالة (غير مفتوح ولا مجدد ولا مصلح)<br>✅ ملاحظة: جميع القطع أصلية 💯", 
+            img: "iphone12pro.jpg" 
         }
         ];
 
         function displayProducts() {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = products.map(p => `
-                <div class="card" onclick="openProduct(${p.id})">
+            const laptopGrid = document.getElementById('laptops-grid');
+            laptopGrid.innerHTML = laptops.map(p => createCard(p, 'laptops')).join('');
+            const phoneGrid = document.getElementById('phones-grid');
+            phoneGrid.innerHTML = phones.map(p => createCard(p, 'phones')).join('');
+        }
+
+        function createCard(p, type) {
+            return `
+                <div class="card" onclick="openProduct(${p.id}, '${type}')">
                     <img src="${p.img}" alt="${p.name}">
                     <h3>${p.name}</h3>
                     <p class="price">${p.price}</p>
                 </div>
-            `).join('');
+            `;
         }
 
-        function openProduct(id) {
-            const p = products.find(x => x.id === id);
+        function openProduct(id, type) {
+            const list = (type === 'phones') ? phones : laptops;
+            const p = list.find(x => x.id === id);
             document.getElementById('modalTitle').innerText = p.name;
             document.getElementById('modalCat').innerText = p.cat;
             document.getElementById('modalDesc').innerHTML = p.desc;
             document.getElementById('modalPrice').innerText = p.price;
             document.getElementById('modalImg').src = p.img;
-            const message = `مرحباً جود ستور، أريد طلب هذا المنتج:\n\nالمنتج: ${p.name}\nالسعر: ${p.price}`;
+            const message = `مرحباً جود ستور، أود الاستفسار عن ${p.name}`;
             document.getElementById('whatsappLink').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(message)}`;
             document.getElementById('productModal').style.display = 'flex';
         }
 
         function closeModal() { document.getElementById('productModal').style.display = 'none'; }
+        
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
+
         window.onclick = (e) => { if(e.target.id === 'productModal') closeModal(); }
         window.onload = displayProducts;
     </script>
